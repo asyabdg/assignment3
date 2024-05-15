@@ -31,7 +31,20 @@ public class BST<K extends Comparable<K>, V> {
     }
 
     public V get(K key) {
-        return null;
+        return get(root, key);
+    }
+
+    private V get(Node node, K key) {
+        if (node == null) {
+            return null;
+        }
+        int k = key.compareTo(node.key);
+        if (k < 0) {
+            return get(node.left, key);
+        } else if (k > 0) {
+            return get(node.right, key);
+        }
+        return node.data;
     }
 
 
@@ -84,4 +97,4 @@ public class BST<K extends Comparable<K>, V> {
         return node.right == null ? node: findSmallestValue(node.right);
     }
     public Iterable<K> iterator() { return null; }
-}
+}git add .
